@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\WARSHIP\LED;..\WARSHIP\KEY;..\WARSHIP\TFT;..\SYSTEM\ADC;..\SYSTEM\GPIO;..\SYSTEM\IIC_FullSpeed;..\SYSTEM\IIC_HighSpeed;..\SYSTEM\PWM;..\SYSTEM\RCC;..\SYSTEM\SPI;..\SYSTEM\TIMER;..\WARSHIP\OLED;..\WARSHIP\W25Q128;..\WARSHIP\NRF24L01;..\SYSTEM\MyUart;..\WARSHIP\ESP8266_AT;..\WARSHIP\RGB</IncludePath>
+              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\WARSHIP\LED;..\WARSHIP\KEY;..\WARSHIP\TFT;..\SYSTEM\ADC;..\SYSTEM\GPIO;..\SYSTEM\IIC_FullSpeed;..\SYSTEM\IIC_HighSpeed;..\SYSTEM\PWM;..\SYSTEM\RCC;..\SYSTEM\SPI;..\SYSTEM\TIMER;..\WARSHIP\OLED;..\WARSHIP\W25Q128;..\WARSHIP\NRF24L01;..\SYSTEM\MyUart;..\WARSHIP\ESP8266_AT;..\WARSHIP\RGB;..\WARSHIP\Encoder</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -501,6 +501,11 @@
               <FileName>RGB.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\WARSHIP\RGB\RGB.c</FilePath>
+            </File>
+            <File>
+              <FileName>Encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\Encoder\Encoder.c</FilePath>
             </File>
           </Files>
         </Group>

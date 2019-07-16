@@ -1,3 +1,9 @@
+/*Esp8266 AT指令库目前尚不稳定，待测试完成会加上代码注释....
+
+
+ */
+
+
 #include "ESP8266_AT.h"
 #include "timer.h"
 #include "delay.h"

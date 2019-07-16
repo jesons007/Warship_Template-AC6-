@@ -1,3 +1,17 @@
+/*  
+eg:
+将RGB的三个控制脚分别接入TIM3的 TIM_CH1，TIM_CH2，TIM_CH4（PA6,PA7,PB1）
+//调用
+	RGB_Init()
+//然后更改
+	RGB_R = 500；
+	RGB_G = 500；
+	RGB_B = 500；
+//便可以控制颜色及亮度
+
+ */
+
+
 #include "RGB.h"
 #include "pwm.h"
 
