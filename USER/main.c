@@ -11,7 +11,7 @@ void setup()
 	JTAG_Set(SWD_ENABLE);   //关闭JTAG
 	LCD_init(BKOR);
 	
-	H_IIC_init(PG(13),PC(0));
+	H_IIC_init(PG(13),PC(0));   //别忘了修改H_IIC.c里面的引脚配置
 	oled_init();
 	oled_show_str(0,0,(u8*)"jesons007 ok!", $1608);
 	OLED_REFRESH_FULL;

@@ -2,6 +2,7 @@
 #define _oled_h_
 #include "H_IIC.h"
 #include "delay.h"
+#include "OLED_font.h"
 
 #define $1206 12
 #define $1608 16
@@ -29,5 +30,6 @@ void clear_point(u8 x,u8 y);
 void oled_show_char(u8 x,u8 y,u8 chr,u8 font);
 void oled_show_str(u8 x, u8 y, u8* p,u8 font);
 void oled_show_num(u8 x, u8 y, uint64_t num,u8 font,u8 chs);
+void oled_show_img(u8 *img);
 
 #endif
