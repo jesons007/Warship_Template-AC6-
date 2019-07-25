@@ -122,7 +122,6 @@ void _SDA_OUT()//数据总线为输出模式
 
 u8 _SDA_read()//读1或0
 {
-	return 0;
 	if(GPIOC->IDR&(1<<0))
 		return 1;
 	else
