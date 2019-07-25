@@ -18,5 +18,6 @@
 #include "MyUart.h"
 #include "ESP8266_AT.h"
 #include "RGB.h"
-
+#include "MPU6050.h"
+#include "TimeKeeper.h"
 #endif
