@@ -17,6 +17,11 @@ void TimeKeeper_ON()            //TimeKeeper开启计时，开启时会将之前
 void TimeKeeper_OFF()           //关闭计时，不清零
 Get_TimeKeeper_Count()          //返回从调用TimeKeeper_ON()开始到当前的计时时间(单位 1/10/100 us)
 
+demo:
+    TimeKeeper_ON();	
+	//function code
+	TimeKeeper_OFF();
+    printf("%d\r\n",Get_TimeKeeper_Count());    //打印function code执行时间
 */
 
 #include "TimeKeeper.h"
