@@ -1,5 +1,7 @@
 #include "key.h"
 
+extern float pitch,roll,yaw; 		//Å·À­½Ç  º½Ïò½Ç£¨yaw£©¡¢ºá¹ö½Ç£¨roll£©ºÍ¸©Ñö½Ç£¨pitch£©
+
 //				WK_UP  KEY0  KEY1  KEY2
 u8 key_sta[4] = {1,     1,    1,    1};
 u8 key_bak[4] = {1,     1,    1,    1};			//1:not press    0:pressed
@@ -213,7 +215,11 @@ void keyup_press()
 
 void key0_press()
 {
-	
+	LED1 = !LED1;
+	TimeKeeper_ON();
+	mpu_dmp_get_data(&pitch,&roll,&yaw);		//µÃµ½Å·À­½Ç165us
+	TimeKeeper_OFF();
+    LCD_show_number(0,500,Get_TimeKeeper_Count(),BLACK,BKOR,10);
 }
 
 void key1_press()

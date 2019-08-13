@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 #include "sys.h"
 
-#define Matrixkeyboard_ENR   1           //�Ƿ�֧�־������, 1: ֧��  0: ��֧�� 
+#define Matrixkeyboard_ENR   0           //�Ƿ�֧�־������, 1: ֧��  0: ��֧�� 
 
 //#define KEY0  PEin(4)
 //#define KEY1  PEin(3)

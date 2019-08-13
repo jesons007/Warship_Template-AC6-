@@ -60,12 +60,18 @@ u16 ADC_Get_Value(ADC_TypeDef* ADCx, u8 Channel)
 	
 }
 
+u8 adc_reset_enr=1;
 void ADC_Init(ADC_TypeDef* ADCx, u8 Channel)
 {	
 	RCC->CFGR |= 0X8000;    //ADC时钟12M
 	
-	RCC->APB2RSTR |= 0x43<<9;
-	RCC->APB2RSTR &= ~(0x43<<9);    //ADC1,2,3复位
+	if(adc_reset_enr)
+	{
+		adc_reset_enr = 0;
+		RCC->APB2RSTR |= 0x43<<9;
+		RCC->APB2RSTR &= ~(0x43<<9);    //ADC1,2,3复位
+	}
+
 	
 	ADCx->CR1 &= 0XFFF0FFFF;     //独立模式
 	ADCx->CR1 &= ~(1<<8);        //关闭扫描模式
