@@ -1,6 +1,5 @@
 #include "key.h"
 
-extern float pitch,roll,yaw; 		//欧拉角  航向角（yaw）、横滚角（roll）和俯仰角（pitch）
 
 //				WK_UP  KEY0  KEY1  KEY2
 u8 key_sta[4] = {1,     1,    1,    1};
@@ -43,7 +42,7 @@ void key_init(void)
 	RCC->APB2ENR |= 1<<2;
 	RCC->APB2ENR |= 1<<6;
 	RCC->APB1ENR |= 1<<4;
-	
+#if  Matrixkeyboard_ENR
 	Key_Out_Init(KEY_OUT1);
 	Key_Out_Init(KEY_OUT2);
 	Key_Out_Init(KEY_OUT3);
@@ -52,7 +51,7 @@ void key_init(void)
 	Key_In_Init(KEY_IN2);
 	Key_In_Init(KEY_IN3);
 	Key_In_Init(KEY_IN4);
-
+#endif
 	GPIOA->CRL &= 0XFFFFFFF0;
 	GPIOA->CRL |= 0X00000008;   
 	GPIOA->ODR &= 0XFFFE;			//PA0下拉输入
@@ -71,6 +70,7 @@ void key_init(void)
 	TIM6->CR1 |= 1;
 }
 
+#if  Matrixkeyboard_ENR
 void Key_Out_Init(u8 pin)
 {
 	RCC->APB2ENR |= 1<<((pin>>4)+2);//使能GPIO的时钟
@@ -86,6 +86,7 @@ void Key_In_Init(u8 pin)
 	*(uint32_t *)(GPIOA_BASE+1024*(pin>>4)+0x0c) |= 1<<(pin&0X0F);
 
 }
+#endif
 
 void key_scan()
 {
@@ -215,11 +216,7 @@ void keyup_press()
 
 void key0_press()
 {
-	LED1 = !LED1;
-	TimeKeeper_ON();
-	mpu_dmp_get_data(&pitch,&roll,&yaw);		//得到欧拉角165us
-	TimeKeeper_OFF();
-    LCD_show_number(0,500,Get_TimeKeeper_Count(),BLACK,BKOR,10);
+	
 }
 
 void key1_press()
