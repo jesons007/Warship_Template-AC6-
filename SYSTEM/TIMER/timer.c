@@ -174,15 +174,15 @@ void TIM4_IRQHandler()
     TIM4->SR &= 0XFFFE;    
 }
 
-void TIM5_IRQHandler()
-{
-    if(TIM5->SR&0x0001)
-    {
-        (*TIM5_arr_overflow_Irq)();
-    }
+// void TIM5_IRQHandler()
+// {
+//     if(TIM5->SR&0x0001)
+//     {
+//         (*TIM5_arr_overflow_Irq)();
+//     }
     
-    TIM5->SR &= 0XFFFE;        
-}
+//     TIM5->SR &= 0XFFFE;        
+// }
 //void TIM6_IRQHandler()
 //{
 //    if(TIM6->SR & 0x0001)

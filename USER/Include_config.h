@@ -20,4 +20,6 @@
 #include "RGB.h"
 #include "MPU6050.h"
 #include "TimeKeeper.h"
+#include "Encoder.h"
+
 #endif

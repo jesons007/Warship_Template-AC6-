@@ -4,7 +4,7 @@
 #include "delay.h"	
 #include "stdio.h"     //包含使用Printf
 
-float pitch,roll,yaw; 		//欧拉角  航向角（yaw）、横滚角（roll）和俯仰角（pitch）
+
 void setup()
 {
 	JTAG_Set(SWD_ENABLE);   //关闭JTAG,只用SWD
@@ -22,69 +22,37 @@ void setup()
 	key_init(); //TIM6
 	TimeKeeper_Init(TimeKeeper_1us_Count); //TIM7;
 	//myuart_init(USART3,115200,PB(11),PB(10));
+
+	GPIO_PIN_Init(PA(0),INPUT_DOWN);
+	GPIO_PIN_Init(PA(1),INPUT_DOWN);
+	Orth_Encoder_Init(TIM5);
+
 }
 
-
+int Encoder_position;
 int main(void)
 {			
-	
-	short aacx,aacy,aacz;		//加速度传感器原始数据
-	short gyrox,gyroy,gyroz;	//陀螺仪原始数据
-	short temp;
-	u8 *buff[10];
-	u8 i=0,j=1;
 	setup();
-	uart_send_str(USART1,$STR"SYS OK!\r\n");
-	
-	printf("111%d\r\n",i);
-	LED0 = 0;
-	
-	TimeKeeper_ON();	
-	while(MPU_Init())//1722.3ms
-	{
-		LCD_show_str(0,0,$STR"MPU6050 error!",BLACK,BKOR);
-		delay_ms(200);
-		LCD_show_str(0,0,$STR"              ",BLACK,BKOR);
-		delay_ms(200);
-	}
+	LCD_Show_OneChar(300,700,'-',BLACK,BKOR);
 	
 	
-	TimeKeeper_OFF();
-	LCD_show_number(0,200,Get_TimeKeeper_Count(),BLACK,BKOR,10);
-	
-	LED0 = 1;
-	
-	LCD_show_str(0,0, $STR"yaw:   ",BLACK,BKOR);
-	LCD_show_str(0,24,$STR"roll:  ",BLACK,BKOR);
-	LCD_show_str(0,48,$STR"pitch: ",BLACK,BKOR);
-	
-	 TimeKeeper_ON();
-	 mpu_dmp_get_data(&pitch,&roll,&yaw);		//得到欧拉角165us
-	 TimeKeeper_OFF();
-     LCD_show_number(0,448,Get_TimeKeeper_Count(),BLACK,BKOR,10);
-	
+	printf("set up ok!\r\n");
 	while(1)
 	{
-		mpu_dmp_get_data(&pitch,&roll,&yaw);		//得到欧拉角
-		// MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
-		// MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据
-		MPU_6050_LcdShow(84,0,  yaw);
-		MPU_6050_LcdShow(84,24, roll);
-		MPU_6050_LcdShow(84,48, pitch);
-
-		//  temp = aacy;
-		// // if(temp<0)
-		// // {
-		// // 	temp = -temp;
-		// // 	LCD_show_str(0,100,$STR"-",BLACK,BKOR);
-		// // }
-		// // else	LCD_show_str(0,100,$STR" ",BLACK,BKOR);
-		// // LCD_show_number(12,100,temp,BLACK,BKOR,5);
+		LCD_show_str(0,0,$STR"Encount:  ",BLACK,BKOR);
+		Encoder_position = Orth_Get_EnCount(TIM5);
+		if(Encoder_position<0)
+		{
+			Encoder_position = -Encoder_position;
+			LCD_show_str(108,0,$STR"-",BLACK,BKOR);
+		}
+		else
+		{
+			LCD_show_str(108,0,$STR" ",BLACK,BKOR);
+		}
+		LCD_show_number(120,0,Encoder_position,BLACK,BKOR,10);
 
 		key_moniter();
-		
-		//delay_ms(500);	
-		//mpu_dmp_get_data(&pitch,&roll,&yaw);
 		LED0 = !LED0;
 	}
 } 
