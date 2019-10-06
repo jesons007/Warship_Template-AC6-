@@ -1,3 +1,9 @@
+/*
+2019/10/6:新增函数void LCD_Show_OneChar(u16 x,u16 y,u8 chr,u16 color,u16 Back_Ground);
+显示单个字符函数
+
+*/
+
 #include "lcd.h"
 #include "delay.h"
 #include "LCD_Font.h"
@@ -188,6 +194,13 @@ void LCD_Draw_Line(u16 x1, u16 y1, u16 x2, u16 y2, u16 color)
 			uCol+=incy; 
 		} 
 	}  
+}
+
+void LCD_Show_OneChar(u16 x,u16 y,u8 chr,u16 color,u16 Back_Ground)
+{
+	LCD_Scan_Dir(U2D_L2R);
+	LCD_show_char(x,y,chr,color,Back_Ground);
+	LCD_Scan_Dir(L2R_U2D);
 }
 
 void LCD_show_char(u16 x,u16 y,u8 chr,u16 color,u16 Back_Ground)
