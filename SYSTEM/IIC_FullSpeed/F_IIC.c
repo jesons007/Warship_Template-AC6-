@@ -33,6 +33,8 @@
 			F_IIC_init(&IIC_User_1);
 		初始化完成!
 
+2019/10/6:修复IIC_Read函数
+
 */
 
 
@@ -150,8 +152,8 @@ u8 F_IIC_read(F_IIC_TypeDef *F_IIC_Initer, u8 ack)
 		delay_us(1);
 	}
 	//ack
-	SDA_OUT(F_IIC_Initer);
 	SCL_set(F_IIC_Initer,0);
+	SDA_OUT(F_IIC_Initer);      //----顺序问题已修复2019/10/6
 	SDA_set(F_IIC_Initer,!ack);
 	delay_us(1);
 	SCL_set(F_IIC_Initer,1);

@@ -69,6 +69,9 @@
 				else
 					return 0;
 			}
+
+
+2019/10/6:修复IIC_Read函数
 */
 
 
@@ -186,8 +189,8 @@ u8 H_IIC_read(u8 ack)
 		//delay_us(1);
 	}
 	//ack
-	_SDA_OUT();
 	_SCL_set(0);
+	_SDA_OUT();    //----顺序问题已修复2019/10/6
 	_SDA_set(!ack);
 	//delay_us(1);
 	_SCL_set(1);
