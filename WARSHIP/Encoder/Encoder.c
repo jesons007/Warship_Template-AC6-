@@ -31,9 +31,18 @@ eg:
 	En_Speed = 30000 - En_counter;
 	Orth_Set_EnCount(TIM5,30000);
 便可获得转速 En_Speed   (单位：个脉冲/ms)
+
+2019/10/6更新说明：
+	完善编码器功能，解决计数溢出问题
+	新增函数：int Orth_Get_EnCount(TIM_TypeDef *TIMx);
+	返回值为int类型（解决溢出问题）
+
         
 */
 #include "Encoder.h"
+#include "LED.h"
+
+int upload_count = 0;
 
 void Orth_Encoder_Init(TIM_TypeDef *TIMx)
 {
@@ -62,17 +71,60 @@ void Orth_Encoder_Init(TIM_TypeDef *TIMx)
 	TIMx->SMCR  &= 0XFFF8;
 	TIMx->SMCR  |= 3;       //编码器模式 3––计数器在 TI1FP1 和 TI2FP2 的边沿计数，计数的方向取决于另外一个信号的电平。
 	
-	TIMx->CNT = 30000;
+	TIMx->DIER |= 0x01;   //开启溢出中断
+	
+	NVIC->IP[TIM5_IRQn]  = (10)<<4;
+	NVIC->ISER[TIM5_IRQn/32] |= 1<<(TIM5_IRQn%32);
+	
+	Orth_Set_EnCount(TIM5, 1000000);
 	TIMx->CR1 |= 0X01;
 }
 
-u16 Orth_Get_EnCount(TIM_TypeDef *TIMx)
+int Orth_Get_EnCount(TIM_TypeDef *TIMx)
 {
-	return TIMx->CNT;
+	int temp;
+	if(upload_count>=0)
+	{
+		temp = upload_count*65535 + (TIMx->CNT);
+	}
+	else if(upload_count<0)
+	{
+		temp = upload_count*65536 + (TIMx->CNT);
+	}
+	return temp;
 }
 
-void Orth_Set_EnCount(TIM_TypeDef *TIMx,u16 count)
+void Orth_Set_EnCount(TIM_TypeDef *TIMx,int count)
 {
-	TIMx->CNT = count;
+	int temp;
+	if(count>=0)
+	{
+		upload_count = count / 65535;
+		TIMx->CNT = count % 65535;
+	}
+	else
+	{
+		count = -count;
+		temp = (count/65536) +1;
+		upload_count = -temp;
+		TIMx->CNT = 65536*temp - count;
+	}
+	
 }
 
+void TIM5_IRQHandler()
+{
+    if(TIM5->SR&0x0001)
+    {
+		LED1 = !LED1;
+		if((TIM5->CNT)<100)  //上溢
+		{
+			upload_count ++;
+		}
+		else if((TIM5->CNT)>65400)   //下溢
+		{
+			upload_count --;
+		}
+    }
+    TIM5->SR &= 0XFFFE;        
+}
