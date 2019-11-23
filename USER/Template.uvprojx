@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\WARSHIP\LED;..\WARSHIP\KEY;..\WARSHIP\TFT;..\SYSTEM\ADC;..\SYSTEM\GPIO;..\SYSTEM\IIC_FullSpeed;..\SYSTEM\IIC_HighSpeed;..\SYSTEM\PWM;..\SYSTEM\RCC;..\SYSTEM\SPI;..\SYSTEM\TIMER;..\WARSHIP\OLED;..\WARSHIP\W25Q128;..\WARSHIP\NRF24L01;..\SYSTEM\MyUart;..\WARSHIP\ESP8266_AT;..\WARSHIP\RGB;..\WARSHIP\Encoder;..\WARSHIP\MPU6050\eMPL;..\WARSHIP\MPU6050;..\WARSHIP\TimeKeeper</IncludePath>
+              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\WARSHIP\LED;..\WARSHIP\KEY;..\WARSHIP\TFT;..\SYSTEM\ADC;..\SYSTEM\GPIO;..\SYSTEM\IIC_FullSpeed;..\SYSTEM\IIC_HighSpeed;..\SYSTEM\PWM;..\SYSTEM\RCC;..\SYSTEM\SPI;..\SYSTEM\TIMER;..\WARSHIP\OLED;..\WARSHIP\W25Q128;..\WARSHIP\NRF24L01;..\SYSTEM\MyUart;..\WARSHIP\ESP8266_AT;..\WARSHIP\RGB;..\WARSHIP\Encoder;..\WARSHIP\MPU6050\eMPL;..\WARSHIP\MPU6050;..\WARSHIP\TimeKeeper;..\WARSHIP\TFT\Touch</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -473,11 +473,6 @@
               <FilePath>..\WARSHIP\KEY\key.c</FilePath>
             </File>
             <File>
-              <FileName>LCD.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\WARSHIP\TFT\LCD.c</FilePath>
-            </File>
-            <File>
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\WARSHIP\OLED\oled.c</FilePath>
@@ -531,6 +526,56 @@
               <FileName>inv_mpu_dmp_motion_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\WARSHIP\MPU6050\eMPL\inv_mpu_dmp_motion_driver.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TFT_LCD</GroupName>
+          <Files>
+            <File>
+              <FileName>LCD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\LCD.c</FilePath>
+            </File>
+            <File>
+              <FileName>Touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\Touch\Touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>gt9147.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\Touch\gt9147.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\Touch\ctiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD_Font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\LCD_Font.c</FilePath>
+            </File>
+            <File>
+              <FileName>UI_Module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\Touch\UI_Module.c</FilePath>
+            </File>
+            <File>
+              <FileName>img.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\img.c</FilePath>
+            </File>
+            <File>
+              <FileName>Mini_TFT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\Mini_TFT\Mini_TFT.c</FilePath>
+            </File>
+            <File>
+              <FileName>Nano_TFT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\TFT\Nano_TFT\Nano_TFT.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -365,6 +365,24 @@ void LCD_Draw_Circle(u16 x0,u16 y0,u8 r,u16 color)
 		} 						    
 	}
 } 				
+//显示94x78pix的黑白图片
+void LCD_Draw_9478BMP(u16 X0,u16 Y0, const u8 *buf ,u16 color, u16 back_color)
+{
+    u16 i;
+    u16 point_num = 3666;
+
+    LCD_SetWin(X0,Y0,X0+93,Y0+77);
+    for(i=0;i<point_num;i++)
+    {
+        if((*buf)&0xf0)LCD_write_ram(color);
+        else LCD_write_ram(back_color);
+
+        if((*buf)&0x0f)LCD_write_ram(color);
+        else LCD_write_ram(back_color);
+
+        buf++;
+    }
+}
 
 void LCD_Clear(u16 color)
 {
@@ -819,3 +837,24 @@ void LCD_init(u16 color)
 		LCD_LED = 1;
 		LCD_Clear(color);
 }
+
+
+/*
+Func: 显示图片
+x0,y0 :图片起始点坐标
+width,height :分辨率（宽X高 = width X height）
+imgbuf :图片取模指针
+*/
+void LCD_Draw_Img(u16 x0,u16 y0, u16 width,u16 height, u8 *imgbuf)
+{
+	int i,j=0;
+	LCD_SetWin(x0,y0,x0+width-1,y0+height-1);
+
+	for(i=0;i<width*height;i++)
+	{
+		LCD->LCD_RAM = (((u16)imgbuf[j+1])<<8) + imgbuf[j];
+		j+=2;
+	}
+
+}
+

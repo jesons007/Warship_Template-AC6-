@@ -21,5 +21,9 @@
 #include "MPU6050.h"
 #include "TimeKeeper.h"
 #include "Encoder.h"
+#include "Touch.h"
 
+#include "img.h"
+#include "Mini_TFT.h"
+#include "Nano_TFT.h"
 #endif

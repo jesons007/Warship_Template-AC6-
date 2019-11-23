@@ -4,7 +4,6 @@
 #include "delay.h"	
 #include "stdio.h"     //包含使用Printf
 
-
 void setup()
 {
 	JTAG_Set(SWD_ENABLE);   //关闭JTAG,只用SWD
@@ -26,34 +25,34 @@ void setup()
 	GPIO_PIN_Init(PA(0),INPUT_DOWN);
 	GPIO_PIN_Init(PA(1),INPUT_DOWN);
 	Orth_Encoder_Init(TIM5);
+	gt9147_init();
+	//Tp_NumPad_Init(1);
 
 }
 
-int Encoder_position;
 int main(void)
 {			
+	u8 tem=0;
+	u8 temp = 0;
 	setup();
-	LCD_Show_OneChar(300,700,'-',BLACK,BKOR);
+	printf("set up ok!\r\n");	
 	
-	
-	printf("set up ok!\r\n");
+	u16 i=0;
+	TimeKeeper_ON();
+	LCD_Draw_Img(0,0,320,480,(u8 *)gImage_1);
+	TimeKeeper_OFF();
+	LCD_show_number(0,400,Get_TimeKeeper_Count(),BLACK,WHITE,10);
 	while(1)
 	{
-		LCD_show_str(0,0,$STR"Encount:  ",BLACK,BKOR);
-		Encoder_position = Orth_Get_EnCount(TIM5);
-		if(Encoder_position<0)
-		{
-			Encoder_position = -Encoder_position;
-			LCD_show_str(108,0,$STR"-",BLACK,BKOR);
-		}
-		else
-		{
-			LCD_show_str(108,0,$STR" ",BLACK,BKOR);
-		}
-		LCD_show_number(120,0,Encoder_position,BLACK,BKOR,10);
-
+		delay_ms(1);
 		key_moniter();
-		LED0 = !LED0;
+		i++;
+		if(i>=200)
+		{
+			i=0;
+			LED1 = !LED1;
+			//printf("system running!\r\n");
+		}
 	}
 } 
 

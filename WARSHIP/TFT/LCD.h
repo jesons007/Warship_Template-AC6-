@@ -63,5 +63,8 @@ void LCD_SetCursor(u16 x, u16 y);
 void LCD_Scan_Dir(u8 dir);		
 void LCD_SetWin(u16 X0, u16 Y0, u16 X1, u16 Y1);
 
+void LCD_Draw_9478BMP(u16 X0,u16 Y0, const u8 *buf ,u16 color, u16 back_color);//ÏÔÊ¾94x78pixµÄºÚ°×Í¼Æ¬
+void LCD_Draw_Img(u16 x0,u16 y0, u16 width,u16 height, u8 *imgbuf);
+
 #endif
 
