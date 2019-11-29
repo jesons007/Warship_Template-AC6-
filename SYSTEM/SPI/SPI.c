@@ -68,6 +68,15 @@ void SPI_init(SPI_TypeDef *SPIx, u8 SPI_MODE, u8 width, u8 SPI_Speed_Grade)
 //写一个字节的同时读回一个字节
 u8 SPI_Write_Read(SPI_TypeDef *SPIx, u8 data)
 {
+
+	while(!(SPIx->SR&0x02))    //等待上一次发送完成
+	SPIx->DR = data;
+	while(!(SPIx->SR&0x01))    //等待接收完成
+	return SPIx->DR;
+}
+/*
+u8 SPI_Write_Read(SPI_TypeDef *SPIx, u8 data)
+{
 	u16 val=0;
 	while(!(SPIx->SR&0x02))    //等待上一次发送完成
 	{
@@ -85,4 +94,4 @@ u8 SPI_Write_Read(SPI_TypeDef *SPIx, u8 data)
 	}
 	
 	return SPIx->DR;
-}
+}*/
