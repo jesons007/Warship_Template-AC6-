@@ -115,8 +115,8 @@ void Nano_tft_clear_16bit_pix(u16 color)
 void Nano_TFT_Init()
 {
 	SPI_init(SPI2, SPI_MODE_2, SPI_8Bits_Mode, 1);
-    GPIO_PIN_Init(PB(13),OUTPUT_PP);     //spi2 clk (hardware pin)
-    GPIO_PIN_Init(PB(15),OUTPUT_PP);     //spi2 mosi(hardware pin)
+    GPIO_PIN_Init(PB(13),OUTPUT_FF);     //spi2 clk (hardware pin)
+    GPIO_PIN_Init(PB(15),OUTPUT_FF);     //spi2 mosi(hardware pin)
     GPIO_PIN_Init(PG(7), OUTPUT_PP);     //cs
     GPIO_PIN_Init(PG(8), OUTPUT_PP);     //BL
     Nano_TFT_clk_1;   //时钟空闲为1，上升沿采样
