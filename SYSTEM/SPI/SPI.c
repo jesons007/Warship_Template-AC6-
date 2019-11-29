@@ -6,9 +6,9 @@ SPI时钟源说明：
 	SPI1:      PCLK2 = 72M
 	
 	分频后波特率(速度等级:1~8):
-	SPI1_CLK = 72M/(2^速度等级)
-	SPI2_CLK = 36M/(2^速度等级)
-	SPI3_CLK = 36M/(2^速度等级)
+	SPI1_CLK = 72M/(2^速度等级)  最快36M
+	SPI2_CLK = 36M/(2^速度等级)  最快18M
+	SPI3_CLK = 36M/(2^速度等级)  最快18M
 
 SPI_init(SPI_TypeDef *SPIx, u8 SPI_MODE, u8 width, u8 SPI_Speed_Grade)函数说明：
 默认配置:
