@@ -2,6 +2,8 @@
 #include "Include_config.h"
 #include "UI_Module.h"
 
+#include "stdio.h"     //包含使用Printf
+
 
 //触摸按键数量
 u8 Tp_Key_num = 13;

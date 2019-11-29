@@ -90,16 +90,16 @@ u8 gt9147_init()
 
     GT9147_Read_REG(GT_PID_REG, temp, 4);       //读取产品id
     temp[4] = '\0';
-    printf("CTP ID:%s\r\n",temp);		        //打印ID
+    //printf("CTP ID:%s\r\n",temp);		        //打印ID
     if(strcmp((char*)temp, "9147")==0)
     {       //初始化成功
         temp[0] = 0x02;
         GT9147_Writ_REG(GT_CTRL_REG, temp, 1);  //软复位
         GT9147_Read_REG(GT_CFGS_REG, temp, 1);  //读取GT_CFGS_REG寄存器
-        printf("Now Ver:%d\r\n",temp[0]);
+        //printf("Now Ver:%d\r\n",temp[0]);
         if(temp[0]<96)                        //默认版本比较低,需要更新flash配置
 		{
-			printf("Default Ver:%d\r\n",temp[0]);
+			//printf("Default Ver:%d\r\n",temp[0]);
 			GT9147_Send_Cfg(1);//更新并保存配置
 		}
 		delay_ms(10);
