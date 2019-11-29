@@ -25,9 +25,8 @@ void setup()
 	GPIO_PIN_Init(PA(0),INPUT_DOWN);
 	GPIO_PIN_Init(PA(1),INPUT_DOWN);
 	Orth_Encoder_Init(TIM5);
-	gt9147_init();
+	//gt9147_init();
 	//Tp_NumPad_Init(1);
-
 }
 
 int main(void)

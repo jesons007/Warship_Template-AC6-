@@ -83,14 +83,14 @@ void uart_send_data(USART_TypeDef *USARTx, u8 *buff, u16 send_len) //∑¢ÀÕ÷∏∂®≥§∂
 		uart_send_byte(USARTx,buff[i]);
 }
 
-// void USART1_IRQHandler()
-// {
-// 	if(USART1->SR&(1<<5))
-// 	{
-// 		Usart_DR = USART1->DR;
-// 		//uart_send_byte(USART1,Usart_DR);
-// 	}
-// }
+void USART1_IRQHandler()
+{
+	if(USART1->SR&(1<<5))
+	{
+		Usart_DR = USART1->DR;
+		//uart_send_byte(USART1,Usart_DR);
+	}
+}
 
 void Uart_Rx_IRQENR(USART_TypeDef *USARTx, u8 enr)   //Ω” ’÷–∂œ πƒ‹øÿ÷∆
 {

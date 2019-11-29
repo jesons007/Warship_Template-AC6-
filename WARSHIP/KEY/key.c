@@ -210,39 +210,25 @@ void TIM6_IRQHandler()
 	TIM6->SR = 0;
 }
 
-u16 x_now=0,y_now=0;
+
 void keyup_press()
 {
-	LCD_Set_Window(x_now,y_now,x_now+319,y_now+479,BKOR);
-	if(y_now>0)
-	{
-		y_now--;
-		LCD_Draw_Img(x_now,y_now,320,480,(u8 *)gImage_1);
-	}
+	
 
 }
 
 void key0_press()
 {
-	LCD_Set_Window(x_now,y_now,x_now+319,y_now+479,BKOR);
-	x_now++;
-	LCD_Draw_Img(x_now,y_now,320,480,(u8 *)gImage_1);
+	
 }
 
 void key1_press()
 {
-	LCD_Set_Window(x_now,y_now,x_now+319,y_now+479,BKOR);
-	y_now++;
-	LCD_Draw_Img(x_now,y_now,320,480,(u8 *)gImage_1);
+	
 }
 void key2_press()
 {
-	LCD_Set_Window(x_now,y_now,x_now+319,y_now+479,BKOR);
-	if(x_now>0)
-	{
-		x_now--;
-		LCD_Draw_Img(x_now,y_now,320,480,(u8 *)gImage_1);
-	}
+	
 }
 
 #if  Matrixkeyboard_ENR
@@ -257,8 +243,4 @@ void keyM_press(u8 key)   //¾ØÕó¼üÅÌ±»°´ÏÂ
 
 #endif
 
-void USART1_IRQHandler()
-{
-	
-}
 
