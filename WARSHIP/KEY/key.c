@@ -210,21 +210,21 @@ void TIM6_IRQHandler()
 	TIM6->SR = 0;
 }
 
-
+u8 puf[1024];
 void keyup_press()
 {
-	// u8 puf[1024];
-	// TimeKeeper_ON();
-	// W25Q128_Read(puf,0,1024);
-	// TimeKeeper_OFF();
-	// LCD_show_str(0,0,$STR"Read Time(us): ",RED,BKOR);
-	// LCD_show_number(15*12,0,Get_TimeKeeper_Count(),BLACK,WHITE,10);
-	// TimeKeeper_ON();
-	// uart_send_data(USART1,puf,1024);
-	// TimeKeeper_OFF();
-	// LCD_show_str(0,24,$STR"Send Time(us): ",RED,BKOR);
-	// LCD_show_number(15*12,24,Get_TimeKeeper_Count(),BLACK,WHITE,10);
-
+	
+	TimeKeeper_ON();
+	W25Q128_Read(puf,0,1024);        
+	TimeKeeper_OFF();
+	LCD_show_str(0,48,$STR"Read Time(us): ",RED,BKOR);     //1230us
+	LCD_show_number(15*12,48,Get_TimeKeeper_Count(),BLACK,WHITE,10);
+	TimeKeeper_ON();
+	uart_send_data(USART1,puf,1024);
+	TimeKeeper_OFF();
+	LCD_show_str(0,72,$STR"Send Time(us): ",RED,BKOR);
+	LCD_show_number(15*12,72,Get_TimeKeeper_Count(),BLACK,WHITE,10);  //97681us
+	
 }
 
 void key0_press()

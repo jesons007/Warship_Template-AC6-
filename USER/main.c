@@ -55,7 +55,7 @@ int main(void)
 	
 	while(1)
 	{
-		delay_ms(1);
+		//delay_ms(1);
 		key_moniter();
 		i++;
 		if(i>=200)
