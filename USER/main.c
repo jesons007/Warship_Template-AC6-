@@ -37,32 +37,38 @@ int main(void)
 	u16 i=0;
 	setup();
 	printf("set up ok!\r\n");
+	LCD_show_str(0,0,$STR"set up ok!",BLACK,BKOR);
 	//uart_send_str(USART1,$STR"set up ok\r\n");
 		
-	LCD_show_str(0,0,$STR"OK",BLACK,BKOR);
 	TimeKeeper_ON();
 	LCD_Draw_Img(0,300,320,480,(u8 *)0x08003c9e);
 	TimeKeeper_OFF();
 	//LCD_show_number(0,400,(u32)gImage_1,BLACK,WHITE,10);
-	while(!W25Q128_Check())
-	{
-		LCD_show_str(0,0,$STR"W25Q128 Error!",RED,BKOR);
-		delay_ms(100);
-		LCD_show_str(0,0,$STR"              ",RED,BKOR);
-		delay_ms(100);
-	}
+	
+	// while(!W25Q128_Check())
+	// {
+	// 	LCD_show_str(0,0,$STR"W25Q128 Error!",RED,BKOR);
+	// 	delay_ms(100);
+	// 	LCD_show_str(0,0,$STR"              ",RED,BKOR);
+	// 	delay_ms(100);
+	// }
 	
 	while(1)
 	{
-		delay_ms(1);
-		key_moniter();
-		i++;
-		if(i>=200)
-		{
-			i=0;
-			LED1 = !LED1;
-			//printf("system running!\r\n");
-		}
+		// delay_ms(1);
+		// key_moniter();
+		// i++;
+		// if(i>=200)
+		// {
+		// 	i=0;
+		// 	LED1 = !LED1;
+		// 	//printf("system running!\r\n");
+		// }
+		PB5__Set_0;PE5__Set_0;
+		delay_ms(500);
+		PB5__Set_1;PE5__Set_1;
+		delay_ms(500);
+		
 	}
 } 
 

@@ -135,7 +135,7 @@ void uart_init(u32 pclk2,u32 bound)
 #if EN_USART1_RX		  //如果使能了接收
 	//使能接收中断 
 	USART1->CR1|=1<<5;    //接收缓冲区非空中断使能	    	
-	MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
+	//MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
 #endif
 }
 
