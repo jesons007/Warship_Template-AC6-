@@ -38,8 +38,6 @@ int main(void)
 	setup();
 	printf("set up ok!\r\n");
 	//uart_send_str(USART1,$STR"set up ok\r\n");
-	
-	
 		
 	LCD_show_str(0,0,$STR"OK",BLACK,BKOR);
 	TimeKeeper_ON();

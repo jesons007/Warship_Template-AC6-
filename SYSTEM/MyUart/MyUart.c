@@ -41,7 +41,6 @@ void myuart_init(USART_TypeDef *USARTx, u32 baud, u8 RX_PIN, u8 TX_PIN)
 			n = ((u32)USARTx-(u32)USART2)/1024 + 38;
 		else
 			n = ((u32)USARTx-(u32)UART4)/1024 + 52;
-			
 	}
 	
 	temp=(float)(pclk*1000000)/(baud*16);	//µÃµ½USARTDIV
