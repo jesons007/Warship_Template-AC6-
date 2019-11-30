@@ -14,7 +14,7 @@ void setup()
 	
 	H_IIC_init(PG(13),PC(0));   //别忘了修改H_IIC.c里面的引脚配置
 	oled_init();
-	oled_show_str(0,0,(u8*)"jesons007 ok!", $1608);
+	oled_show_str(0,0,(u8*)"oled ok!", $1608);
 	//oled_show_img((u8*)img1);
 	OLED_REFRESH_FULL;
 	
@@ -36,12 +36,16 @@ int main(void)
 {			
 	u16 i=0;
 	setup();
-	printf("set up ok!\r\n");	
+	printf("set up ok!\r\n");
+	//uart_send_str(USART1,$STR"set up ok\r\n");
 	
+	
+		
+	LCD_show_str(0,0,$STR"OK",BLACK,BKOR);
 	TimeKeeper_ON();
-	LCD_Draw_Img(0,300,320,480,(u8 *)gImage_1);
+	LCD_Draw_Img(0,300,320,480,(u8 *)0x08003c9e);
 	TimeKeeper_OFF();
-	//LCD_show_number(0,400,Get_TimeKeeper_Count(),BLACK,WHITE,10);
+	//LCD_show_number(0,400,(u32)gImage_1,BLACK,WHITE,10);
 	while(!W25Q128_Check())
 	{
 		LCD_show_str(0,0,$STR"W25Q128 Error!",RED,BKOR);
@@ -49,7 +53,7 @@ int main(void)
 		LCD_show_str(0,0,$STR"              ",RED,BKOR);
 		delay_ms(100);
 	}
-
+	
 	while(1)
 	{
 		delay_ms(1);

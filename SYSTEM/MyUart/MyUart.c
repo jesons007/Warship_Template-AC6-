@@ -59,12 +59,14 @@ void myuart_init(USART_TypeDef *USARTx, u32 baud, u8 RX_PIN, u8 TX_PIN)
 	NVIC->ISER[n/32] |= 1<<(n%32);
 	
 	USARTx->CR1 |= 0X2000;//使能UART
+	
 }
 
 void uart_send_byte(USART_TypeDef *USARTx, u8 data)				//发送一个字节
 {      
-	while((USARTx->SR&0X40)==0);//等待上一次串口数据发送完成  
+	while((USARTx->SR&0X40)==0);//等待上一次串口数据发送完成
 	USARTx->DR = data;      	//写DR,串口将发送数据
+	
 }
 
 void uart_send_str(USART_TypeDef *USARTx, u8 *buff)               //发送字符串
