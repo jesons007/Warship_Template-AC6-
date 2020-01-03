@@ -100,7 +100,8 @@ void ADC_Init(ADC_TypeDef* ADCx, u8 Channel)
 
 u16 ADC_Get_Raw(ADC_TypeDef* ADCx, u8 Channel)
 {
-	ADCx->SQR3 |= Channel;
+	ADCx->SQR3 &=0XFFFFFFE0;  //清除第一个开始转换的通道号
+	ADCx->SQR3 |= Channel;   //设置第一个开始转换的通道号
 	ADCx->CR2 |= 1<<22;          //开始转换规则通道
 	while(!(ADCx->SR&0x02));	 //等待转换结束
 	
