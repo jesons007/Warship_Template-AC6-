@@ -327,7 +327,7 @@
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>1</useXO>
-            <v6Lang>6</v6Lang>
+            <v6Lang>3</v6Lang>
             <v6LangP>0</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\WARSHIP\LED;..\WARSHIP\KEY;..\WARSHIP\TFT;..\SYSTEM\ADC;..\SYSTEM\GPIO;..\SYSTEM\IIC_FullSpeed;..\SYSTEM\IIC_HighSpeed;..\SYSTEM\PWM;..\SYSTEM\RCC;..\SYSTEM\SPI;..\SYSTEM\TIMER;..\WARSHIP\OLED;..\WARSHIP\W25Q128;..\WARSHIP\NRF24L01;..\SYSTEM\MyUart;..\WARSHIP\ESP8266_AT;..\WARSHIP\RGB;..\WARSHIP\Encoder;..\WARSHIP\MPU6050\eMPL;..\WARSHIP\MPU6050;..\WARSHIP\TimeKeeper;..\WARSHIP\TFT\Touch;..\WARSHIP\TFT\Mini_TFT;..\WARSHIP\TFT\Nano_TFT</IncludePath>
+              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\WARSHIP\LED;..\WARSHIP\KEY;..\WARSHIP\TFT;..\SYSTEM\ADC;..\SYSTEM\GPIO;..\SYSTEM\IIC_FullSpeed;..\SYSTEM\IIC_HighSpeed;..\SYSTEM\PWM;..\SYSTEM\RCC;..\SYSTEM\SPI;..\SYSTEM\TIMER;..\WARSHIP\OLED;..\WARSHIP\W25Q128;..\WARSHIP\NRF24L01;..\SYSTEM\MyUart;..\WARSHIP\ESP8266_AT;..\WARSHIP\RGB;..\WARSHIP\Encoder;..\WARSHIP\MPU6050\eMPL;..\WARSHIP\MPU6050;..\WARSHIP\TimeKeeper;..\WARSHIP\TFT\Touch;..\WARSHIP\TFT\Mini_TFT;..\WARSHIP\TFT\Nano_TFT;..\WARSHIP\SDIO</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -360,7 +360,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>0</umfTarg>
+            <umfTarg>1</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -506,6 +506,11 @@
               <FileName>TimeKeeper.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\WARSHIP\TimeKeeper\TimeKeeper.c</FilePath>
+            </File>
+            <File>
+              <FileName>SDIO_sdcard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\WARSHIP\SDIO\SDIO_sdcard.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -16,6 +16,7 @@
 
 #define $STR (u8*)
 
+//fix bug: 12.19 
 //GPIO Fast Set/Reset:
 #define PA0__Set_1 GPIOA->ODR |= 0x0001
 #define PA1__Set_1 GPIOA->ODR |= 0x0002
