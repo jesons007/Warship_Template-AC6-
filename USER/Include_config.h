@@ -26,4 +26,6 @@
 #include "img.h"
 #include "Mini_TFT.h"
 #include "Nano_TFT.h"
+#include "SDIO_sdcard.h"
+
 #endif

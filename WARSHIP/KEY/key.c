@@ -1,4 +1,5 @@
 #include "key.h"
+#include "stdio.h"     //包含使用Printf
 
 extern float pitch,roll,yaw; 		//欧拉角  航向角（yaw）、横滚角（roll）和俯仰角（pitch）
 
@@ -227,18 +228,44 @@ void keyup_press()
 	
 }
 
+u8 buf[600];
 void key0_press()
 {
+	u16 sd_size;
+	// u8 *ff=buf;
+	// do{
+    //        ff++;
+    // }while((u32)ff%4!=0);
+	printf("buf addr:%#X\r\n",(u32)buf);
+	// printf("ff  addr:%#X\r\n",(u32)ff);
+
+	TimeKeeper_ON();
+	printf("er:%d\r\n",SD_ReadDisk(buf,0,1));
+	TimeKeeper_OFF();
+	printf("SD_ReadDisk time:%dus\r\n",Get_TimeKeeper_Count());
+	printf("SECTOR 0 DATA:\r\n");
+	for(sd_size=0;sd_size<512;sd_size++)printf("%x ",buf[sd_size]);//打印0扇区数据    	   
+	printf("\r\nDATA ENDED\r\n");
 	
 }
 
 void key1_press()
 {
-	
+	u16 sd_size;
+	u8 *ff=buf;
+	do{
+           ff++;
+    }while((u32)ff%4!=0);
+	printf("ff addr:%#X\r\n",(u32)ff);
+
+	for(sd_size=0;sd_size<512;sd_size++)ff[sd_size]=sd_size;
+	printf("SECTOR 0 write:\r\n");
+	printf("er:%d\r\n",SD_WriteDisk(ff,0,1));
+	printf("SECTOR 0 write done:\r\n");
 }
 void key2_press()
 {
-	
+	print_DATAbuf();
 }
 
 #if  Matrixkeyboard_ENR
